@@ -21,12 +21,11 @@
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @for ($i = 0; $i < 10; $i++)
-                            
+                        @foreach ($about as $item)  
                         <tr>
-                            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>1</strong></td>
-                            <td>Albert Cook</td>
-                            <td>Description</td>
+                            <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{ $item->id }}</strong></td>
+                            <td>{{ $item->title }}</td>
+                            <td>{{ $item->description }}</td>
                             <td>
                                 <div class="dropdown">
                                     <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -34,16 +33,17 @@
                                         <i class="bx bx-dots-vertical-rounded"></i>
                                     </button>
                                     <div class="dropdown-menu">
-                                        <a class="dropdown-item" href="javascript:void(0);"><i
-                                                class="bx bx-edit-alt me-1"></i>
-                                            Edit</a>
-                                        <a class="dropdown-item" href="javascript:void(0);"><i class="bx bx-trash me-1"></i>
-                                            Delete</a>
+                                        <form action="{{ route('about.edit') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="id" value="{{ $item->id }}">
+                                            <button type="submit" class="dropdown-item"><i class="bx bx-edit-alt me-1"></i>Edit</button>
+                                            <a class="dropdown-item" href="{{ url('dashboard/about/delete/'.$item->id) }}"><i class="bx bx-trash me-1"></i>Delete</a>
+                                        </form>
                                     </div>
                                 </div>
                             </td>
                         </tr>
-                        @endfor
+                        @endforeach
                     </tbody>
                 </table>
             </div>

@@ -13,16 +13,16 @@
                     <div class="row my-5">
                         <div class="col-6 col-md-6">
                             <div class="feature">
-                                <div class="icon">
+                                {{-- <div class="icon">
                                     <img src="{{ asset('furni/images/truck.svg') }}" alt="Image" class="imf-fluid">
-                                </div>
+                                </div> --}}
                                 <h3>Fast &amp; Free Shipping</h3>
                                 <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
                                 </p>
                             </div>
                         </div>
 
-                        <div class="col-6 col-md-6">
+                        {{-- <div class="col-6 col-md-6">
                             <div class="feature">
                                 <div class="icon">
                                     <img src="{{ asset('furni/images/bag.svg') }}" alt="Image" class="imf-fluid">
@@ -53,7 +53,7 @@
                                 <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
                                 </p>
                             </div>
-                        </div>
+                        </div> --}}
 
                     </div>
                 </div>

@@ -25,5 +25,7 @@ class LoginController extends Controller
                 return redirect('/');
             }
         }
+
+        return back()->with('Wrong email or password!');
     }
 }

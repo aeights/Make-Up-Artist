@@ -7,7 +7,7 @@
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Dashboard - Analytics | Sneat - Bootstrap 5 HTML Admin Template - Pro</title>
+    <title>Dashboard - {{ ucfirst(Auth::user()->role) }}</title>
 
     <meta name="description" content="" />
 
@@ -144,24 +144,24 @@
                         <span class="menu-header-text">Feature</span>
                     </li>
                     <li class="menu-item">
-                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                        <a href="" class="menu-link menu-toggle">
                             <i class="menu-icon tf-icons bx bx-dock-top"></i>
-                            <div data-i18n="Account Settings">Account Settings</div>
+                            <div data-i18n="Account Settings">Appointment</div>
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="pages-account-settings-account.html" class="menu-link">
-                                    <div data-i18n="Account">Account</div>
+                                <a href="{{ route('setting.appointments') }}" class="menu-link">
+                                    <div data-i18n="Account">All Appointment</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="pages-account-settings-notifications.html" class="menu-link">
-                                    <div data-i18n="Notifications">Notifications</div>
+                                <a href="{{ route('appointment.add') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Add Appointment</div>
                                 </a>
                             </li>
                             <li class="menu-item">
-                                <a href="pages-account-settings-connections.html" class="menu-link">
-                                    <div data-i18n="Connections">Connections</div>
+                                <a href="{{ route('appointment.history') }}" class="menu-link">
+                                    <div data-i18n="Connections">History</div>
                                 </a>
                             </li>
                         </ul>
@@ -352,6 +352,9 @@
 
     <!-- Page JS -->
     <script src="{{ asset('sneat/assets/js/dashboards-analytics.js') }}"></script>
+
+    <!-- Page JS -->
+    <script src="{{ asset('sneat/assets/js/ui-modals.js') }}"></script>
 
     <!-- Place this tag in your head or just before your close body tag. -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
