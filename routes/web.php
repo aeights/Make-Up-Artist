@@ -80,7 +80,11 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::post('dashboard/appointment/edit','edit')->name('appointment.edit');
         Route::post('dashboard/appointment/update','update')->name('appointment.update');
         Route::get('dashboard/appointment/delete/{id}','delete')->name('appointment.delete');
+        
         Route::get('dashboard/appointments/history','history')->name('appointment.history');
+        Route::post('dashboard/appointments/detail','detail')->name('appointment.detail');
+
+        Route::get('dashboard/appointments/empty','empty')->name('appointments.empty');
     });
 });
 

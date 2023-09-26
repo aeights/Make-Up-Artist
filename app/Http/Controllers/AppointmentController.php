@@ -9,24 +9,39 @@ use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
 {
+    public function empty()
+    {
+        return view('pages.admin.appointments-empty');
+    }
+
+    public function history()
+    {
+        $appointments = Appointment::where('status','Completed')->get();
+        return view('pages.admin.appointment-history',[
+            'appointments' => $appointments
+        ]);
+    }
+
     public function index()
     {
-        $appointment = Appointment::all();
-        if ($appointment->isNotEmpty()) {
+        $appointments = Appointment::where('status','!=','Completed')->orderBy('status','desc')->get();
+        if ($appointments->isNotEmpty()) {
             return view('pages.admin.appointments',[
-                'appointment' => $appointment
+                'appointments' => $appointments
             ]);
         }
-        return redirect('dashboard/setting/about/empty');
+        return redirect('dashboard/appointments/empty');
     }
 
     public function create()
     {
+        $appointments = Appointment::where('status','Accepted')->orderBy('status')->get();
         $services = Service::all();
-        $customer = User::where('role','customer')->get();
+        $customer = User::where('role','customer')->orderBy('name')->get();
         return view('pages.admin.appointment-add',[
             'services' => $services,
-            'customer' => $customer
+            'customer' => $customer,
+            'appointments' => $appointments,
         ]);
     }
 
@@ -35,7 +50,7 @@ class AppointmentController extends Controller
         $validated = $request->validate([
             'user_id' => 'required',
             'service_id' => 'required',
-            'date' => 'required'
+            'date' => 'required|unique:appointments,date'
         ]);
 
         if ($validated) {

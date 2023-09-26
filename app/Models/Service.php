@@ -12,4 +12,9 @@ class Service extends Model
     protected $guarded = [
         'id'
     ];
+
+    public function appointment()
+    {
+        return $this->hasMany(Appointment::class);
+    }
 }
