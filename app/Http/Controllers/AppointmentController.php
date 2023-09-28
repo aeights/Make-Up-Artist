@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\PaymentMethod;
 use App\Models\Service;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -36,12 +38,14 @@ class AppointmentController extends Controller
     public function create()
     {
         $appointments = Appointment::where('status','Accepted')->orderBy('status')->get();
-        $services = Service::all();
         $customer = User::where('role','customer')->orderBy('name')->get();
+        $services = Service::all();
+        $payments = PaymentMethod::all();
         return view('pages.admin.appointment-add',[
             'services' => $services,
             'customer' => $customer,
             'appointments' => $appointments,
+            'payments' => $payments,
         ]);
     }
 
@@ -50,20 +54,35 @@ class AppointmentController extends Controller
         $validated = $request->validate([
             'user_id' => 'required',
             'service_id' => 'required',
+            'payment_method_id' => 'required',
             'date' => 'required|unique:appointments,date'
         ]);
 
         if ($validated) {
-            $appointment = Appointment::create($validated);
-            return to_route('setting.appointments')->with('message','Appointment added successfully!');
+            $appointment = Appointment::create([
+                'user_id' => $request->user_id,
+                'service_id' => $request->service_id,
+                'payment_method_id' => $request->payment_method_id,
+                'date' => $request->date,
+                'appointment_time' => Carbon::now(),
+            ]);
+            return to_route('list.appointments')->with('message','Appointment added successfully!');
         }
     }
 
     public function edit(Request $request)
     {
+        $appointments = Appointment::where('status','Accepted')->orderBy('status')->get();
         $appointment = Appointment::find($request->id);
+        $customer = User::where('role','customer')->orderBy('name')->get();
+        $services = Service::all();
+        $payments = PaymentMethod::all();
         return view('pages.admin.appointment-edit',[
             'appointment' => $appointment,
+            'appointments' => $appointments,
+            'services' => $services,
+            'customer' => $customer,
+            'payments' => $payments,
         ]);
     }
 
@@ -72,15 +91,20 @@ class AppointmentController extends Controller
         $validated = $request->validate([
             'user_id' => 'required',
             'service_id' => 'required',
-            'date' => 'required'
+            'date' => 'required',
+            'payment_method_id' => 'required',
+            'date' => 'required|unique:appointments,date,'.$request->id
         ]);
 
         if ($validated) {
             $appointment = Appointment::find($request->id)->update([
-                'title' => $request->title,
-                'description' => $request->description,
+                'user_id' => $request->user_id,
+                'service_id' => $request->service_id,
+                'payment_method_id' => $request->payment_method_id,
+                'date' => $request->date,
+                'appointment_time' => Carbon::now(),
             ]);
-            return to_route('setting.appointments')->with('message','Appointment update successfully!');
+            return to_route('list.appointments')->with('message','Appointment update successfully!');
         }
     }
 
@@ -88,6 +112,6 @@ class AppointmentController extends Controller
     {
         $appointment = Appointment::find($id);
         $appointment->delete();
-        return to_route('setting.appointments')->with('message','Appointment delete successfully!');
+        return to_route('list.appointments')->with('message','Appointment delete successfully!');
     }
 }

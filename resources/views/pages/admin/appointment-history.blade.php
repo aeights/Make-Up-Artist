@@ -40,7 +40,7 @@
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <form action="{{ route('appointment.edit') }}" method="POST">
+                                            <form action="{{ route('appointment.detail') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="id" value="{{ $item->id }}">
                                                 <button type="submit" class="dropdown-item"><i

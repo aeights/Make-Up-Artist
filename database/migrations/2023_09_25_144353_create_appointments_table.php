@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\PaymentMethod;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
@@ -18,7 +19,9 @@ return new class extends Migration
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Service::class);
             $table->dateTime('date');
-            $table->enum('status',['Pending','Accepted','Rejected','Completed']);
+            $table->timestamp('appointment_time');
+            $table->foreignIdFor(PaymentMethod::class);
+            $table->enum('status',['Pending','Verification','Accepted','Rejected','Completed']);
             $table->timestamps();
         });
     }

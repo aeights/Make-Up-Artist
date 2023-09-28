@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\UpdateAccountController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Auth;
@@ -50,6 +51,14 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware(['auth','role:admin'])->group(function () {
+    Route::controller(UpdateAccountController::class)->group(function () {
+        Route::get('profile','index')->name('profile');
+        Route::get('profile/edit','edit')->name('profile.edit');
+        Route::post('profile/update','update')->name('profile.update');
+    });
+});
+
+Route::middleware(['auth','role:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('dashboard/admin','index')->name('dashboard.admin');
         Route::get('dashboard/setting/{menu}/empty','noData')->name('dashboard.empty');
@@ -74,7 +83,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
     });
 
     Route::controller(AppointmentController::class)->group(function () {
-        Route::get('dashboard/appointments','index')->name('setting.appointments');
+        Route::get('dashboard/appointments','index')->name('list.appointments');
         Route::get('dashboard/appointment/add','create')->name('appointment.add');
         Route::post('dashboard/appointment/add','store')->name('appointment.store');
         Route::post('dashboard/appointment/edit','edit')->name('appointment.edit');

@@ -55,15 +55,15 @@
             </div>
         </div>
         <div class="card">
-            <form action="{{ route('appointment.add') }}" method="POST">
+            <form action="{{ route('appointment.update') }}" method="POST">
                 @csrf
-                {{-- <input type="hidden" name="user_id" value="{{ Auth::user()->id }}"> --}}
+                <input type="hidden" name="id" value="{{ $appointment->id }}">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="card-header">Add Appointment</h5>
+                    <h5 class="card-header">Edit Appointment</h5>
                     <div class="me-3">
                         <a onclick="document.getElementById('buttonSchedule').click()"
                             class="btn btn-primary text-white me-1" type="submit">Available Schedule</a>
-                        <button class="btn btn-primary" type="submit">Add</button>
+                        <button class="btn btn-primary" type="submit">Save</button>
                     </div>
                 </div>
                 <div class="card-body">
@@ -71,7 +71,7 @@
                         <label for="exampleFormControlSelect1" class="form-label">Customer</label>
                         <select name="user_id" class="form-select" id="exampleFormControlSelect1"
                             aria-label="Default select example">
-                            <option selected hidden>Select customer</option>
+                            <option selected value="{{ $appointment->user_id }}">{{ $appointment->user['name'] }}</option>
                             @foreach ($customer as $item)
                                 <option value="{{ $item->id }}">Name: {{ $item->name }} - Email:
                                     {{ $item->email }}
@@ -83,7 +83,7 @@
                         <label for="exampleFormControlSelect1" class="form-label">Services</label>
                         <select name="service_id" class="form-select" id="exampleFormControlSelect1"
                             aria-label="Default select example">
-                            <option selected hidden>Select service</option>
+                            <option selected value="{{ $appointment->service_id }}">{{ $appointment->service['name'] }}</option>
                             @foreach ($services as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }} - Rp. {{ $item->price }}
                                 </option>
@@ -92,13 +92,13 @@
                     </div>
                     <div class="mb-3">
                         <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Date and Time</label>
-                        <input name="date" class="form-control" type="datetime-local" id="html5-datetime-local-input" />
+                        <input name="date" value="{{ $appointment->date }}" class="form-control" type="datetime-local" id="html5-datetime-local-input"/>
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Payment Method</label>
                         <select name="payment_method_id" class="form-select" id="exampleFormControlSelect1"
                             aria-label="Default select example">
-                            <option selected hidden>Select payment method</option>
+                            <option selected value="{{ $appointment->payment_method_id }}">{{ $appointment->paymentMethod['type'] }}</option>
                             @foreach ($payments as $item)
                                 <option value="{{ $item->id }}">{{ $item->type }} - A/N. {{ $item->account_number }}
                                 </option>

@@ -22,4 +22,9 @@ class Appointment extends Model
     {
         return $this->belongsTo(Service::class);
     }
+
+    public function paymentMethod()
+    {
+        return $this->belongsTo(PaymentMethod::class);
+    }
 }
