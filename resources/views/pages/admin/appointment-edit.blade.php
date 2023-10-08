@@ -67,9 +67,38 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    <div class="mb-3 d-flex">
+                        <div class="evidence-image me-3">
+                            <label for="" class="form-label">Evidence</label>
+                            <div class="preview-image">
+                                <img src="{{ $payment->getFirstMediaUrl('evidence') }}">
+                            </div>
+                            <div id="image-viewer">
+                                <span class="close">&times;</span>
+                                <img class="modal-content" id="full-image">
+                            </div>
+                        </div>
+                        <div class="w-100">
+                            <div class="mb-3">
+                                <label for="defaultFormControlInput" class="form-label">Type</label>
+                                <input readonly value="{{ $payment->type }}" name="type" type="text" class="form-control bg-white" id="defaultFormControlInput"
+                                    placeholder="Type" aria-describedby="defaultFormControlHelp" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="defaultFormControlInput" class="form-label">Name</label>
+                                <input readonly value="{{ $payment->name }}" name="name" type="text" class="form-control bg-white" id="defaultFormControlInput"
+                                    placeholder="Name" aria-describedby="defaultFormControlHelp" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="defaultFormControlInput" class="form-label">Account Number</label>
+                                <input readonly value="{{ $payment->account_number }}" name="account_number" type="text" class="form-control bg-white" id="defaultFormControlInput"
+                                    placeholder="Account_number" aria-describedby="defaultFormControlHelp" />
+                            </div>
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
-                        <select name="service_id" class="form-select" id="exampleFormControlSelect1"
+                        <select name="status" class="form-select" id="exampleFormControlSelect1"
                             aria-label="Default select example">
                             <option selected value="{{ $appointment->status }}">{{ $appointment->status }}</option>
                             <option value="Pending">Pending</option>
@@ -96,7 +125,8 @@
                         <label for="exampleFormControlSelect1" class="form-label">Services</label>
                         <select name="service_id" class="form-select" id="exampleFormControlSelect1"
                             aria-label="Default select example">
-                            <option selected value="{{ $appointment->service_id }}">{{ $appointment->service['name'] }}</option>
+                            <option selected value="{{ $appointment->service_id }}">{{ $appointment->service['name'] }}
+                            </option>
                             @foreach ($services as $item)
                                 <option value="{{ $item->id }}">{{ $item->name }} - Rp. {{ $item->price }}
                                 </option>
@@ -105,15 +135,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="html5-datetime-local-input" class="col-md-2 col-form-label">Date and Time</label>
-                        <input name="date" value="{{ $appointment->date }}" class="form-control" type="datetime-local" id="html5-datetime-local-input"/>
+                        <input name="date" value="{{ $appointment->date }}" class="form-control"
+                            type="datetime-local" id="html5-datetime-local-input" />
                     </div>
                     <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Payment Method</label>
                         <select name="payment_method_id" class="form-select" id="exampleFormControlSelect1"
                             aria-label="Default select example">
-                            <option selected value="{{ $appointment->payment_method_id }}">{{ $appointment->paymentMethod['type'] }}</option>
+                            <option selected value="{{ $appointment->payment_method_id }}">
+                                {{ $appointment->paymentMethod['type'] }}</option>
                             @foreach ($payments as $item)
-                                <option value="{{ $item->id }}">{{ $item->type }} - A/N. {{ $item->account_number }}
+                                <option value="{{ $item->id }}">{{ $item->type }} - A/N.
+                                    {{ $item->account_number }}
                                 </option>
                             @endforeach
                         </select>

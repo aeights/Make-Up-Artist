@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Payment;
 use App\Models\PaymentMethod;
 use App\Models\Service;
 use App\Models\User;
@@ -77,12 +78,14 @@ class AppointmentController extends Controller
         $customer = User::where('role','customer')->orderBy('name')->get();
         $services = Service::all();
         $payments = PaymentMethod::all();
+        $payment = Payment::where('appointment_id',$appointment->id)->first();
         return view('pages.admin.appointment-edit',[
             'appointment' => $appointment,
             'appointments' => $appointments,
             'services' => $services,
             'customer' => $customer,
             'payments' => $payments,
+            'payment' => $payment,
         ]);
     }
 
@@ -93,7 +96,8 @@ class AppointmentController extends Controller
             'service_id' => 'required',
             'date' => 'required',
             'payment_method_id' => 'required',
-            'date' => 'required|unique:appointments,date,'.$request->id
+            'date' => 'required|unique:appointments,date,'.$request->id,
+            'status' => 'required'
         ]);
 
         if ($validated) {
@@ -102,6 +106,7 @@ class AppointmentController extends Controller
                 'service_id' => $request->service_id,
                 'payment_method_id' => $request->payment_method_id,
                 'date' => $request->date,
+                'status' => $request->status,
                 'appointment_time' => Carbon::now(),
             ]);
             return to_route('list.appointments')->with('message','Appointment update successfully!');

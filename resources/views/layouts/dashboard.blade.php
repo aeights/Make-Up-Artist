@@ -31,6 +31,7 @@
         class="template-customizer-theme-css" />
     <link rel="stylesheet" href="{{ asset('sneat/assets/css/demo.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/image.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/preview-image.css') }}" />
 
     <!-- Vendors CSS -->
     <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
@@ -354,6 +355,7 @@
 
     <script src="{{ asset('sneat/assets/vendor/js/menu.js') }}"></script>
     <script src="{{ asset('js/image.js') }}"></script>
+    <script src="{{ asset('js/preview-image.js') }}"></script>
     <!-- endbuild -->
 
     <!-- Vendors JS -->

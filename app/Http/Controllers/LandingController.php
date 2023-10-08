@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use App\Models\Service;
+use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,8 +13,10 @@ class LandingController extends Controller
     public function index()
     {
         $about = About::all();
+        $testimonials = Testimonial::all();
         return view('landing',[
-            'about' => $about
+            'about' => $about,
+            'testimonials' => $testimonials
         ]);
     }
 

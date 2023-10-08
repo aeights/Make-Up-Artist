@@ -43,7 +43,7 @@
                                                 <input type="hidden" name="id" value="{{ $item->id }}">
                                                 <a class="dropdown-item"
                                                     href="{{ url('dashboard/customer/payment/'.$item->id) }}"><i
-                                                        class="bx bx-trash me-1"></i>Payment</a>
+                                                        class="bx bx-credit-card-front me-1"></i>Payment</a>
                                                 <button type="submit" class="dropdown-item"><i
                                                         class="bx bx-edit-alt me-1"></i>Edit</button>
                                                 <a class="dropdown-item"
