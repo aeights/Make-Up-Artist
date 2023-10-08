@@ -6,7 +6,9 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\UpdateAccountController;
+use App\Http\Controllers\CustomerAppointmentController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ServicesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -22,9 +24,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-});
+// Route::get('/', function () {
+//     return view('landing');
+// });
 
 Route::get('logout',function () {
     Auth::logout();
@@ -33,6 +35,7 @@ Route::get('logout',function () {
 
 
 Route::controller(LandingController::class)->group(function () {
+    Route::get('/','index')->name('/');
     Route::get('about-us','about')->name('about');
     Route::get('services','services')->name('service');
     Route::get('dashboard','dashboard')->name('dashboard');
@@ -50,7 +53,7 @@ Route::middleware('guest')->group(function () {
     });
 });
 
-Route::middleware(['auth','role:admin'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::controller(UpdateAccountController::class)->group(function () {
         Route::get('profile','index')->name('profile');
         Route::get('profile/edit','edit')->name('profile.edit');
@@ -84,16 +87,36 @@ Route::middleware(['auth','role:admin'])->group(function () {
 
     Route::controller(AppointmentController::class)->group(function () {
         Route::get('dashboard/appointments','index')->name('list.appointments');
+        
         Route::get('dashboard/appointment/add','create')->name('appointment.add');
         Route::post('dashboard/appointment/add','store')->name('appointment.store');
+
         Route::post('dashboard/appointment/edit','edit')->name('appointment.edit');
         Route::post('dashboard/appointment/update','update')->name('appointment.update');
+        
         Route::get('dashboard/appointment/delete/{id}','delete')->name('appointment.delete');
         
         Route::get('dashboard/appointments/history','history')->name('appointment.history');
         Route::post('dashboard/appointments/detail','detail')->name('appointment.detail');
 
         Route::get('dashboard/appointments/empty','empty')->name('appointments.empty');
+    });
+
+    Route::controller(PaymentMethodController::class)->group(function () {
+        Route::get('dashboard/payments','index')->name('list.payments');
+        
+        Route::get('dashboard/payment/add','create')->name('payment.add');
+        Route::post('dashboard/payment/add','store')->name('payment.store');
+
+        Route::get('dashboard/payment/edit/{id}','edit')->name('payment.edit');
+        Route::post('dashboard/payment/update','update')->name('payment.update');
+
+        Route::get('dashboard/payment/delete/{id}','delete')->name('payment.delete');
+        
+        Route::get('dashboard/payments/history','history')->name('payment.history');
+        Route::post('dashboard/payments/detail','detail')->name('payment.detail');
+
+        Route::get('dashboard/payments/empty','empty')->name('payments.empty');
     });
 });
 
@@ -102,4 +125,23 @@ Route::middleware(['auth','role:customer'])->group(function () {
         Route::get('dashboard/customer','index')->name('dashboard.customer');
     });
 
+    Route::controller(CustomerAppointmentController::class)->group(function () {
+        Route::get('dashboard/customer/appointments','index')->name('cust.list.appointments');
+
+        Route::get('dashboard/customer/appointment/add','create')->name('cust.appointment.add');
+        Route::post('dashboard/customer/appointment/add','store')->name('cust.appointment.store');
+
+        Route::post('dashboard/customer/appointment/edit','edit')->name('cust.appointment.edit');
+        Route::post('dashboard/customer/appointment/update','update')->name('cust.appointment.update');
+
+        Route::get('dashboard/customer/appointment/delete/{id}','delete')->name('cust.appointment.delete');
+        
+        Route::get('dashboard/customer/appointments/history','history')->name('cust.appointment.history');
+        Route::post('dashboard/customer/appointments/detail','detail')->name('cust.appointment.detail');
+
+        Route::get('dashboard/customer/appointments/empty','empty')->name('cust.appointments.empty');
+
+        Route::get('dashboard/customer/payment/{id}','payment')->name('cust.payment');
+        Route::post('dashboard/customer/payment','paymentStore')->name('cust.payment.store');
+    });
 });

@@ -16,10 +16,10 @@ class UserSeeder extends Seeder
     {
         User::insert([
             [
-                'name' => 'Afif',
+                'name' => 'Admin',
                 'address' => 'Jember',
                 'phone' => '085236',
-                'email' => 'afif@mail.com',
+                'email' => 'admin@mail.com',
                 'password' => Hash::make('111'),
                 'role' => 'admin'
             ],

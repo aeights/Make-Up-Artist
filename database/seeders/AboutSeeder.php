@@ -13,7 +13,7 @@ class AboutSeeder extends Seeder
      */
     public function run(): void
     {
-        About::insert([
+        $abouts = [
             [
                 'title' => 'About Us',
                 'description' => 'Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.'
@@ -34,6 +34,10 @@ class AboutSeeder extends Seeder
                 'title' => 'Hassle Free Returns',
                 'description' => 'Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.'
             ],
-        ]);
+        ];
+
+        foreach ($abouts as $key => $value) {
+            About::create($value);
+        }
     }
 }

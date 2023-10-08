@@ -109,6 +109,8 @@
 
                 <div class="menu-inner-shadow"></div>
 
+                @if (Auth::user()->role == 'admin')
+                {{-- Admin Menu --}}
                 <ul class="menu-inner py-1">
                     <!-- Dashboard -->
                     <li class="menu-item">
@@ -134,6 +136,11 @@
                             <li class="menu-item">
                                 <a href="{{ route('setting.services') }}" class="menu-link">
                                     <div data-i18n="Without navbar">Service</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('list.payments') }}" class="menu-link">
+                                    <div data-i18n="Without navbar">Payment</div>
                                 </a>
                             </li>
                         </ul>
@@ -178,6 +185,59 @@
                             </li>
                         </ul>
                     </li>
+                </ul>
+                @else
+                {{-- Customer Menu --}}
+                <ul class="menu-inner py-1">
+                    <!-- Dashboard -->
+                    <li class="menu-item">
+                        <a href="{{ route('dashboard') }}" class="menu-link">
+                            <i class="menu-icon tf-icons bx bx-home-circle"></i>
+                            <div data-i18n="Analytics">Dashboard</div>
+                        </a>
+                    </li>
+
+                    <li class="menu-header small text-uppercase">
+                        <span class="menu-header-text">Feature</span>
+                    </li>
+                    <li class="menu-item">
+                        <a href="" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                            <div data-i18n="Account Settings">Appointment</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="{{ route('cust.list.appointments') }}" class="menu-link">
+                                    <div data-i18n="Account">All Appointment</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('cust.appointment.add') }}" class="menu-link">
+                                    <div data-i18n="Notifications">Add Appointment</div>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="{{ route('cust.appointment.history') }}" class="menu-link">
+                                    <div data-i18n="Connections">History</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <i class="menu-icon tf-icons bx bx-cube-alt"></i>
+                            <div data-i18n="Misc">Misc</div>
+                        </a>
+                        <ul class="menu-sub">
+                            <li class="menu-item">
+                                <a href="" class="menu-link">
+                                    <div data-i18n="Error">Testimonials</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                @endif
             </aside>
             <!-- / Menu -->
 
@@ -225,8 +285,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
-                                                    <small class="text-muted">{{ ucfirst(auth()->user()->role) }}</small>
+                                                    <span
+                                                        class="fw-semibold d-block">{{ auth()->user()->name }}</span>
+                                                    <small
+                                                        class="text-muted">{{ ucfirst(auth()->user()->role) }}</small>
                                                 </div>
                                             </div>
                                         </a>
@@ -261,10 +323,11 @@
                 <!-- Content wrapper -->
                 <div class="content-wrapper">
                     @if (Session::has('message'))
-                    <div class="alert alert-primary alert-dismissible ms-4 me-4 mt-4 shadow-sm" role="alert">
-                        {{ session('message') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                        <div class="alert alert-primary alert-dismissible ms-4 me-4 mt-4 shadow-sm" role="alert">
+                            {{ session('message') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
                     @endif
                     <!-- Content -->
                     @yield('content')

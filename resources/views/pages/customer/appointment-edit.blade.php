@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="card">
-            <form action="{{ route('appointment.update') }}" method="POST">
+            <form action="{{ route('cust.appointment.update') }}" method="POST">
                 @csrf
                 <input type="hidden" name="id" value="{{ $appointment->id }}">
                 <div class="d-flex justify-content-between align-items-center">
@@ -67,31 +67,6 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label for="exampleFormControlSelect1" class="form-label">Status</label>
-                        <select name="service_id" class="form-select" id="exampleFormControlSelect1"
-                            aria-label="Default select example">
-                            <option selected value="{{ $appointment->status }}">{{ $appointment->status }}</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Verification">Verification</option>
-                            <option value="Accepted">Accepted</option>
-                            <option value="Rejected">Rejected</option>
-                            <option value="Completed">Completed</option>
-                            <option value="Canceled">Canceled</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlSelect1" class="form-label">Customer</label>
-                        <select name="user_id" class="form-select" id="exampleFormControlSelect1"
-                            aria-label="Default select example">
-                            <option selected value="{{ $appointment->user_id }}">{{ $appointment->user['name'] }}</option>
-                            @foreach ($customer as $item)
-                                <option value="{{ $item->id }}">Name: {{ $item->name }} - Email:
-                                    {{ $item->email }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Services</label>
                         <select name="service_id" class="form-select" id="exampleFormControlSelect1"

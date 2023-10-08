@@ -13,7 +13,7 @@ class PaymentMethodSeeder extends Seeder
      */
     public function run(): void
     {
-        PaymentMethod::insert([
+        $paymentMethod = [
             [
                 'type' => 'BRI',
                 'name' => 'Admin',
@@ -34,6 +34,10 @@ class PaymentMethodSeeder extends Seeder
                 'name' => 'Admin',
                 'account_number' => '0004'
             ],
-        ]);
+        ];
+
+        foreach ($paymentMethod as $key => $value) {
+            PaymentMethod::create($value);
+        }
     }
 }

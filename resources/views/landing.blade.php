@@ -25,7 +25,7 @@
     <!-- End Hero Section -->
 
     <!-- Start We Help Section -->
-    <div class="we-help-section">
+    {{-- <div class="we-help-section">
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-7 mb-5 mb-lg-0">
@@ -51,7 +51,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- End We Help Section -->
 
     <!-- Start Why Choose Us Section -->
@@ -59,9 +59,8 @@
         <div class="container">
             <div class="row justify-content-between">
                 <div class="col-lg-6">
-                    <h2 class="section-title">About Us</h2>
-                    <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit
-                        imperdiet dolor tempor tristique.</p>
+                    <h2 class="section-title">{{ $about[0]->title }}</h2>
+                    <p>{{ $about[0]->description }}</p>
 
                     <div class="row my-5">
                         <div class="col-6 col-md-6">
@@ -69,9 +68,8 @@
                                 <div class="icon">
                                     <img src="{{ asset('furni/images/truck.svg') }}" alt="Image" class="imf-fluid">
                                 </div>
-                                <h3>Fast &amp; Free Shipping</h3>
-                                <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
-                                </p>
+                                <h3>{{ $about[1]->title }}</h3>
+                                <p>{{ $about[1]->description }}</p>
                             </div>
                         </div>
 
@@ -80,9 +78,8 @@
                                 <div class="icon">
                                     <img src="{{ asset('furni/images/bag.svg') }}" alt="Image" class="imf-fluid">
                                 </div>
-                                <h3>Easy to Shop</h3>
-                                <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
-                                </p>
+                                <h3>{{ $about[2]->title }}</h3>
+                                <p>{{ $about[2]->description }}</p>
                             </div>
                         </div>
 
@@ -91,9 +88,8 @@
                                 <div class="icon">
                                     <img src="{{ asset('furni/images/support.svg') }}" alt="Image" class="imf-fluid">
                                 </div>
-                                <h3>24/7 Support</h3>
-                                <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
-                                </p>
+                                <h3>{{ $about[3]->title }}</h3>
+                                <p>{{ $about[3]->description }}</p>
                             </div>
                         </div>
 
@@ -102,9 +98,8 @@
                                 <div class="icon">
                                     <img src="{{ asset('furni/images/return.svg') }}" alt="Image" class="imf-fluid">
                                 </div>
-                                <h3>Hassle Free Returns</h3>
-                                <p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
-                                </p>
+                                <h3>{{ $about[4]->title }}</h3>
+                                <p>{{ $about[4]->description }}</p>
                             </div>
                         </div>
 
