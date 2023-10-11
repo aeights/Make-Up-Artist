@@ -16,27 +16,27 @@ class TestimonialSeeder extends Seeder
         $testimonials = [
             [
                 'user_id' => 2,
-                'service_id' => 1,
+                'appointment_id' => 1,
                 'description' => 'Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.'
             ],
             [
                 'user_id' => 3,
-                'service_id' => 2,
+                'appointment_id' => 1,
                 'description' => 'Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.'
             ],
             [
                 'user_id' => 4,
-                'service_id' => 3,
+                'appointment_id' => 1,
                 'description' => 'Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.'
             ],
             [
                 'user_id' => 5,
-                'service_id' => 4,
+                'appointment_id' => 1,
                 'description' => 'Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.'
             ],
             [
                 'user_id' => 6,
-                'service_id' => 5,
+                'appointment_id' => 1,
                 'description' => 'Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer convallis volutpat dui quis scelerisque.'
             ],
         ];

@@ -10,6 +10,7 @@ use App\Http\Controllers\CustomerAppointmentController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -65,6 +66,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('dashboard/admin','index')->name('dashboard.admin');
         Route::get('dashboard/setting/{menu}/empty','noData')->name('dashboard.empty');
+
+        Route::get('dashboard/testimonials','testimonial')->name('testimonials');
     });
     
     Route::controller(AboutController::class)->group(function () {
@@ -143,5 +146,15 @@ Route::middleware(['auth','role:customer'])->group(function () {
 
         Route::get('dashboard/customer/payment/{id}','payment')->name('cust.payment');
         Route::post('dashboard/customer/payment','paymentStore')->name('cust.payment.store');
+    });
+
+    Route::controller(TestimonialController::class)->group(function () {
+        Route::get('dashboard/customer/testimonials','index')->name('cust.list.testimonials');
+
+        Route::get('dashboard/customer/testimonial/add','create')->name('cust.add.testimonial');
+        Route::post('dashboard/customer/testimonial/store','store')->name('cust.store.testimonial');
+
+        Route::get('dashboard/customer/testimonial/edit','edit')->name('cust.edit.testimonial');
+        Route::post('dashboard/customer/testimonial/update','update')->name('cust.update.testimonial');
     });
 });

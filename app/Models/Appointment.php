@@ -27,4 +27,9 @@ class Appointment extends Model
     {
         return $this->belongsTo(PaymentMethod::class);
     }
+
+    public function testimonial()
+    {
+        return $this->belongsTo(Testimonial::class);
+    }
 }

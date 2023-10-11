@@ -20,8 +20,8 @@ class CustomerAppointmentController extends Controller
 
     public function history()
     {
-        $appointments = Appointment::where('status','Completed')->get();
-        return view('pages.admin.appointment-history',[
+        $appointments = Appointment::where('user_id',Auth::user()->id)->where('status','Completed')->get();
+        return view('pages.customer.appointment-history',[
             'appointments' => $appointments
         ]);
     }

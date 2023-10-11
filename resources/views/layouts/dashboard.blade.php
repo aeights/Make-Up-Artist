@@ -180,7 +180,7 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="" class="menu-link">
+                                <a href="{{ route('testimonials') }}" class="menu-link">
                                     <div data-i18n="Error">Testimonials</div>
                                 </a>
                             </li>
@@ -231,7 +231,7 @@
                         </a>
                         <ul class="menu-sub">
                             <li class="menu-item">
-                                <a href="" class="menu-link">
+                                <a href="{{ route('cust.list.testimonials') }}" class="menu-link">
                                     <div data-i18n="Error">Testimonials</div>
                                 </a>
                             </li>
