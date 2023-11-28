@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-between align-items-center">
                 <h5 class="card-header">Services</h5>
                 <div class="me-3">
-                    <a class="btn btn-primary" href="{{ route('service.add') }}">Add</a>
+                    <a id="button-add-service" class="btn btn-primary" href="{{ route('service.add') }}">Add</a>
                 </div>
             </div>
             <div class="table-responsive text-nowrap">

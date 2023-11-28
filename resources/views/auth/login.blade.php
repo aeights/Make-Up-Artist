@@ -22,7 +22,7 @@
                         </div>
                         <p>Don't have an account? <a href="{{ route('register') }}">Register</a></p>
                     </div>
-                    <button type="submit" class="btn btn-primary">Login</button>
+                    <button id="button-login" type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>
         </div>

@@ -80,6 +80,9 @@ class AppointmentController extends Controller
         $services = Service::all();
         $payments = PaymentMethod::all();
         $payment = Payment::where('appointment_id',$appointment->id)->first();
+        if ($appointment->status == 'Pending') {
+            return back()->with('message', 'The customer has not completed the payment');
+        }
         return view('pages.admin.appointment-edit',[
             'appointment' => $appointment,
             'appointments' => $appointments,
