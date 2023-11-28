@@ -143,6 +143,10 @@
     <script src="{{ asset('furni/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('furni/js/tiny-slider.js') }}"></script>
     <script src="{{ asset('furni/js/custom.js') }}"></script>
+    
+    {{-- Sweet Alert --}}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="{{ asset('js/alert.js') }}"></script>
 </body>
 
 </html>
