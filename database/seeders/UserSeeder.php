@@ -19,47 +19,47 @@ class UserSeeder extends Seeder
                 'name' => 'Admin',
                 'address' => 'Jember',
                 'phone' => '085236',
-                'email' => 'admin@mail.com',
+                'email' => 'admin@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'admin'
             ],
             [
-                'name' => 'a cust',
-                'address' => 'Cust a address',
+                'name' => 'Customer 1',
+                'address' => 'Customer 1 address',
                 'phone' => '081',
-                'email' => 'a@gmail.com',
+                'email' => 'customer1@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'customer'
             ],
             [
-                'name' => 'b cust',
-                'address' => 'Cust b address',
+                'name' => 'Customer 2',
+                'address' => 'Customer 2 address',
                 'phone' => '082',
-                'email' => 'b@gmail.com',
+                'email' => 'customer2@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'customer'
             ],
             [
-                'name' => 'c cust',
-                'address' => 'Cust c address',
+                'name' => 'Customer 3',
+                'address' => 'Customer 3 address',
                 'phone' => '083',
-                'email' => 'c@gmail.com',
+                'email' => 'customer3@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'customer'
             ],
             [
-                'name' => 'd cust',
-                'address' => 'Cust d address',
+                'name' => 'Customer 4',
+                'address' => 'Customer 4 address',
                 'phone' => '084',
-                'email' => 'd@gmail.com',
+                'email' => 'customer4@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'customer'
             ],
             [
-                'name' => 'e cust',
-                'address' => 'Cust e address',
+                'name' => 'Customer 5',
+                'address' => 'Customer 5 address',
                 'phone' => '085',
-                'email' => 'e@gmail.com',
+                'email' => 'customer5@gmail.com',
                 'password' => Hash::make('111'),
                 'role' => 'customer'
             ],
