@@ -17,8 +17,8 @@ class DatabaseSeeder extends Seeder
             ServiceSeeder::class,
             AboutSeeder::class,
             PaymentMethodSeeder::class,
-            AppointmentSeeder::class,
-            TestimonialSeeder::class,
+            // AppointmentSeeder::class,
+            // TestimonialSeeder::class,
         ]);
     }
 }

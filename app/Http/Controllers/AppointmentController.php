@@ -57,10 +57,15 @@ class AppointmentController extends Controller
             'user_id' => 'required',
             'service_id' => 'required',
             'payment_method_id' => 'required',
-            'date' => 'required|unique:appointments,date'
+            'date' => 'required'
         ]);
 
         if ($validated) {
+            $check = Appointment::where('date', $request->date)->whereNotIn('status', ['Completed','Rejected'])->get();
+            if ($check->isNotEmpty()) {
+                return back()->with('message','The appointment schedule has been taken');
+            }
+            
             $appointment = Appointment::create([
                 'user_id' => $request->user_id,
                 'service_id' => $request->service_id,

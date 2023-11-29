@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    {{-- <div class="mb-3 d-flex">
+                    <div class="mb-3 d-flex">
                         <div class="evidence-image me-3">
                             <label for="" class="form-label">Evidence</label>
                             <div class="preview-image">
@@ -42,7 +42,7 @@
                                     placeholder="Account_number" aria-describedby="defaultFormControlHelp" />
                             </div>
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="mb-3">
                         <label for="exampleFormControlSelect1" class="form-label">Status</label>
                         <select name="status" class="form-select" id="exampleFormControlSelect1"
